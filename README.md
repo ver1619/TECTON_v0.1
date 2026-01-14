@@ -1,9 +1,8 @@
-# VERN v0.1
+# VERNKV v0.1
 
-[![Go Reference](https://pkg.go.dev/badge/vern_kv.svg)](https://pkg.go.dev/vern_kv)
+[![Go Reference](https://pkg.go.dev/badge/vernnkv.svg)](https://pkg.go.dev/vernnkv)
 ![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?logo=go)
-![License](https://img.shields.io/github/license/<user>/VERN_v0.1)
-
+![License](https://img.shields.io/github/LICENSE/ver1619/vern_kv)
 
 <p align="center">
   <img 
