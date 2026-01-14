@@ -17,7 +17,7 @@ type WAL struct {
 	file *os.File
 }
 
-// Open opens (or creates) a WAL file in append mode.
+// opens (or creates) a WAL file in append mode.
 func Open(dir string) (*WAL, error) {
 	path := filepath.Join(dir, "wal.log")
 
@@ -29,12 +29,12 @@ func Open(dir string) (*WAL, error) {
 	return &WAL{file: f}, nil
 }
 
-// AppendPut appends a PUT record to the WAL.
+// appends a PUT record to the WAL.
 func (w *WAL) AppendPut(seq uint64, key, value []byte) error {
 	return w.appendRecord(seq, recordPut, key, value)
 }
 
-// AppendDelete appends a DELETE (tombstone) record.
+// appends a DELETE (tombstone) record.
 func (w *WAL) AppendDelete(seq uint64, key []byte) error {
 	return w.appendRecord(seq, recordDelete, key, nil)
 }
@@ -67,7 +67,7 @@ func (w *WAL) appendRecord(seq uint64, typ byte, key, value []byte) error {
 	return w.file.Sync()
 }
 
-// Entry represents a replayed WAL record.
+// represents a replayed WAL record.
 type Entry struct {
 	Seq       uint64
 	Key       []byte
@@ -75,7 +75,7 @@ type Entry struct {
 	Tombstone bool
 }
 
-// Replay replays WAL records with seq > fromSeq.
+// replays WAL records with seq > fromSeq.
 func (w *WAL) Replay(fromSeq uint64) ([]Entry, error) {
 	if _, err := w.file.Seek(0, io.SeekStart); err != nil {
 		return nil, err
@@ -130,7 +130,7 @@ func (w *WAL) Replay(fromSeq uint64) ([]Entry, error) {
 	return entries, nil
 }
 
-// Close closes the WAL file.
+// closes the WAL file.
 func (w *WAL) Close() error {
 	return w.file.Close()
 }

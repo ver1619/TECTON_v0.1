@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"tecton_kv/sstable"
+	"vern_kv/sstable"
 )
 
 // SSTable Test

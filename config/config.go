@@ -11,7 +11,7 @@ type Config struct {
 	MemtableSizeBytes int64
 }
 
-// DefaultConfig returns a safe default configuration.
+// returns a safe default configuration.
 func DefaultConfig(dataDir string) Config {
 	return Config{
 		DataDir:           dataDir,
@@ -19,12 +19,12 @@ func DefaultConfig(dataDir string) Config {
 	}
 }
 
-// WALDir returns the directory for WAL files.
+// returns the directory for WAL files.
 func (c Config) WALDir() string {
 	return filepath.Join(c.DataDir, "wal")
 }
 
-// SSTableDir returns the directory for SSTables.
+// returns the directory for SSTables.
 func (c Config) SSTableDir() string {
 	return filepath.Join(c.DataDir, "sstables")
 }

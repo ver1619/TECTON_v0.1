@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"tecton_kv/config"
-	"tecton_kv/engine"
+	"vern_kv/config"
+	"vern_kv/engine"
 )
 
 // Memtable Flush Test

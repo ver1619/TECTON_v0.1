@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"tecton_kv/memtable"
+	"vern_kv/memtable"
 )
 
 // Memtable Test

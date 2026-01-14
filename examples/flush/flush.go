@@ -5,14 +5,14 @@ import (
 	"log"
 	"os"
 
-	"tecton_kv/config"
-	"tecton_kv/engine"
+	"vern_kv/config"
+	"vern_kv/engine"
 )
 
 func main() {
 	fmt.Println("===================================================")
 	fmt.Println("NOTE: This is a DEMONSTRATION example")
-	fmt.Println("TectonKV v0.1 — MEMTABLE FLUSH EXAMPLE")
+	fmt.Println("VernKV v0.1 — MEMTABLE FLUSH EXAMPLE")
 	fmt.Println("===================================================")
 
 	dbPath := "examples/flush/db"

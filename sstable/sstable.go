@@ -112,7 +112,7 @@ func Write(path string, entries []Entry) error {
 	return f.Sync()
 }
 
-// Open opens an SSTable for read.
+// opens an SSTable for read.
 func Open(path string) (*SSTable, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -230,7 +230,7 @@ func (s *SSTable) Get(key []byte) (Entry, bool, error) {
 	}, true, nil
 }
 
-// Close closes the SSTable.
+// closes the SSTable.
 func (s *SSTable) Close() error {
 	return s.file.Close()
 }

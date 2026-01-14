@@ -7,10 +7,10 @@ import (
 	"sync"
 	"time"
 
-	"tecton_kv/config"
-	"tecton_kv/memtable"
-	"tecton_kv/sstable"
-	"tecton_kv/wal"
+	"vern_kv/config"
+	"vern_kv/memtable"
+	"vern_kv/sstable"
+	"vern_kv/wal"
 )
 
 // Engine is the top-level database object.
@@ -125,7 +125,7 @@ func (e *Engine) flushFrozen() {
 	finalPath := filepath.Join(e.cfg.SSTableDir(), filename)
 
 	if err := sstable.Write(tmpPath, entries); err != nil {
-		panic(err) // v0.1: crash loudly
+		panic(err)
 	}
 
 	if err := os.Rename(tmpPath, finalPath); err != nil {
@@ -136,7 +136,6 @@ func (e *Engine) flushFrozen() {
 	e.frozen = nil
 }
 
-// Sequence returns the current global sequence number.
 // Intended for testing and diagnostics only.
 func (e *Engine) Sequence() uint64 {
 	e.mu.Lock()
@@ -144,15 +143,10 @@ func (e *Engine) Sequence() uint64 {
 	return e.seq
 }
 
-// MemtableGet returns the latest entry for a key.
+// Memtable returns the latest entry for a key.
 // Intended for testing and diagnostics only.
 func (e *Engine) MemtableGet(key []byte) (memtable.Entry, bool) {
 	return e.active.Get(key)
-}
-
-// Close shuts down the engine.
-func (e *Engine) Close() error {
-	return e.wal.Close()
 }
 
 // Get returns the latest value for a key.
@@ -220,4 +214,9 @@ func (e *Engine) Get(key []byte) ([]byte, bool, error) {
 	}
 
 	return value, true, nil
+}
+
+// Close - shuts down the engine.
+func (e *Engine) Close() error {
+	return e.wal.Close()
 }

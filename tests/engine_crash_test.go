@@ -3,9 +3,9 @@ package tests
 import (
 	"testing"
 
-	"tecton_kv/config"
-	"tecton_kv/engine"
-	"tecton_kv/memtable"
+	"vern_kv/config"
+	"vern_kv/engine"
+	"vern_kv/memtable"
 )
 
 func TestEngineCrashRecoveryFromWAL(t *testing.T) {

@@ -3,8 +3,8 @@ package memtable
 import (
 	"bytes"
 	"math/rand"
-	"tecton_kv/sstable"
 	"time"
+	"vern_kv/sstable"
 )
 
 const (
@@ -33,7 +33,7 @@ type Memtable struct {
 	size  int64
 }
 
-// New creates an empty Memtable.
+// creates an empty(new) Memtable.
 func New() *Memtable {
 	rand.Seed(time.Now().UnixNano())
 
@@ -47,12 +47,12 @@ func New() *Memtable {
 	}
 }
 
-// approximateSize returns current size in bytes.
+// returns current size in bytes.
 func (m *Memtable) approximateSize() int64 {
 	return m.size
 }
 
-// randomLevel generates a random level.
+// generates a random level.
 func randomLevel() int {
 	lvl := 1
 	for rand.Float64() < probability && lvl < maxLevel {
@@ -144,12 +144,12 @@ func (m *Memtable) Get(key []byte) (Entry, bool) {
 	return Entry{}, false
 }
 
-// ApproximateSize returns approximate memory usage.
+// returns approximate memory usage.
 func (m *Memtable) ApproximateSize() int64 {
 	return m.approximateSize()
 }
 
-// AllEntriesSorted returns all entries sorted by key.
+// returns all entries sorted by key.
 func (m *Memtable) AllEntriesSorted() []sstable.Entry {
 	var entries []sstable.Entry
 	x := m.head.forward[0]

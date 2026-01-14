@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"tecton_kv/wal"
+	"vern_kv/wal"
 )
 
 // WAL Test
