@@ -1,4 +1,4 @@
-# *VernKV* (Version v0.1)
+# *VernKV* v0.1
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/ver1619/VernKV.svg?style=flat-square)](https://pkg.go.dev/github.com/ver1619/VernKV)
 ![Go Version](https://img.shields.io/badge/Go-1.22%2B-1f2937?logo=go&logoColor=00ADD8&style=flat-square)
@@ -75,12 +75,32 @@ The following are intentionally out of scope for v0.1:
 - Bloom filters
 - Range scans / iterators
 - Concurrency beyond a single writer
-- Transactions
-- Replication
 - CLI interface
 
 These features may be explored in later versions.
 
+## Tests
 
+VernKV includes both **unit tests** and **integration tests**:
 
+- Unit tests validate individual components such as the WAL, Memtable, and SSTables.
+- Integration tests validate full engine behavior, including crash recovery,
+  flush correctness, and read-path edge cases.
 
+All tests can be run with:
+
+```go
+go test ./...
+```
+
+## Usage Examples
+VernKV does not include a CLI by design.
+Usage is demonstrated through runnable examples:
+- `examples/basic` — basic Put/Get/Delete usage
+- `examples/recovery` — crash recovery via WAL replay
+- `examples/flush` — memtable flush to immutable SSTables
+
+## Project Scope (v0.1):
+VernKV v0.1 is a correctness-focused educational storage engine.
+Its primary goal is to demonstrate how real-world storage guarantees
+are built and reasoned about.
