@@ -58,10 +58,12 @@ VernKV v0.1 provides the following guarantees:
 
 - **Deterministic Recovery**  
   WAL replay is idempotent and deterministic; the same WAL always produces the same state.
-
+  A write is visible only after it has been appended to the WAL and fsynced
 - **Correct Read Semantics**  
   Reads resolve conflicts using sequence numbers and respect tombstones(Deletes), ensuring
   correct handling of overwrites and deletions.
+- **Sequence Numbers**<br>
+  Sequence numbers define total write order, All operations(PUT/DEL) are totally ordered using    monotonically increasing sequence numbers
 
 - **Immutable On-Disk State**  
   SSTables are written once and never modified.
@@ -111,3 +113,4 @@ go run examples/recovery/recovery.go
 VernKV v0.1 is a correctness-focused educational storage engine.
 Its primary goal is to demonstrate how real-world storage guarantees
 are built and reasoned about.
+
