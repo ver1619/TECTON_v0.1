@@ -59,7 +59,7 @@ Ensures reads for non-existent keys return a consistent “not found” result.<
 Checks that reads correctly return data from the active memtable before consulting SSTables.<br>
 
 `TestReadAfterFlush`<br>
-Ensures data remains readable after a memtable flush, validating the durability boundary.<br>
+Ensures that data remains readable after a memtable flush, validating the durability boundary.<br>
 
 `TestReadWithTombstone`<br>
 Confirms that deleted keys remain logically deleted even after flush and recovery.<br>
