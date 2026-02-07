@@ -111,6 +111,10 @@ go run examples/flush/flush.go
 go run examples/recovery/recovery.go
 ```
 
+## Requirements
+**Install**:<br>
+`go 1.23+`
+
 ## Project Scope (v0.1):
 VernKV v0.1 is a correctness-focused educational storage engine.
 Its primary goal is to demonstrate how real-world storage guarantees
